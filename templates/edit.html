@@ -1,0 +1,89 @@
+
+
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{url_for('static',filename='img/home-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Welcome Mr.Dhruv Vavliya</h1>
+            <span class="subheading">Let's Start Writing...!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Main Content -->
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        {% if post.blogid %}
+          {% set temp='/edit/'+post.blogid | string() %}
+          <h2>Edit an Existing Post...</h2>
+        {% else %}
+          {% set temp='/edit/'+'0' %}
+          <h2>Add a New Post...</h2>
+        {% endif %}
+
+        <hr>
+        <h2>Upload a File</h2>
+        <form action="/uploader" method="post" name="img_form" enctype="multipart/form-data">
+          <input type="file" name="img" id="img">
+          <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+        </form>
+
+
+
+        <form name="new_post" action={{temp}} method="post" id="new_post" novalidate>
+
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Title</label>
+              <input type="text" class="form-control"  placeholder="enter the blog's title" id="title" name="title"
+                     required data-validation-required-message="Please enter your name."  value="{{post.title}}"  >
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Content</label>
+              <textarea  class="form-control" placeholder="enter the blog's content" id="content" name="content">{{post.content}}</textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Image File</label>
+              <input type="text" class="form-control" placeholder="upload blog's image" id="img_file" name="img_file" value=about-bg.jpg >
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+
+        </form>
+      </div>
+    </div>
+
+<script type="text/javascript">
+        textarea = document.querySelector("#content");
+        textarea.addEventListener('input', autoResize, false);
+
+        function autoResize() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        }
+    </script>
+
+
+{% endblock %}
+

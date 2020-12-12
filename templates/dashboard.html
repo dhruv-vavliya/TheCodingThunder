@@ -1,0 +1,68 @@
+
+{% extends "layout.html" %}
+{% block body %}
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{url_for('static',filename='img/home-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Welcome Mr.Dhruv Vavliya</h1>
+            <span class="subheading">Let's Start Writing...!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Main Content -->
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    <hr>
+    <h2>Add a new post</h2>
+    <a href="/edit/0"><button type="button" class="btn btn-primary btn-block">New Post</button></a>
+    <hr><hr>
+
+    <h2>My Activity</h2>
+    {% for post in posts %}
+      <tr>
+        <td style="font-size:15px">{{post.blogid}}</td>
+        <td style="font-size:15px"><a href="/post/{{post.slug}}" >{{post.title}}</a></td>
+        <td style="font-size:15px">{{post.date.date()}}</td>
+        <td style="font-size:15px"><a href="/edit/{{post.blogid}}"><button type="button" class="btn btn-outline-primary btn-xs">Edit</button></a></td>
+        <td style="font-size:15px"><a href="/delete/{{post.blogid}}><button type="button" class="btn btn-outline-danger btn-xs">Delete</button></a></td>
+
+      </tr>
+
+     {% endfor %}
+
+    </tbody>
+  </table>
+
+        <hr>
+        <a href="/"><button type="button"  class="btn btn-success">Home Back</button></a>
+        <a href="/logout"><button type="button"  class="btn btn-warning">Logout</button></a>
+
+      </div>
+    </div>
+
+{% endblock %}
+
