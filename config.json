@@ -6,10 +6,10 @@
     "prod_url": "mysql://root:Dhruv@1234@localhost/codingthunder",
     "insta": "https://www.instagram.com/dhruv_vavliya/",
     "gmail_user": "dhruvvavliya@gmail.com",
-    "gmail_password": "jkliop890()/",
+    "gmail_password": "",
     "nposts": 3,
     "username": "Dhruv_Vavliya",
-    "password": "Dhruv@1234",
+    "password": "",
     "img_db": "C:\\Users\\DELL\\PycharmProjects\\Flask_project\\static"
   }
 }
